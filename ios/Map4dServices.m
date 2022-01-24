@@ -1,4 +1,5 @@
 #import "Map4dServices.h"
+#import <Map4dServices/Map4dServices.h>
 
 @implementation Map4dServices
 
@@ -13,7 +14,7 @@ RCT_REMAP_METHOD(multiply,
 {
   NSNumber *result = @([a floatValue] * [b floatValue]);
 
-  resolve(result);
+  resolve(MFServices.version);
 }
 
 @end
