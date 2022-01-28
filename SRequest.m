@@ -128,7 +128,7 @@
 + (MFServiceRequest *)buildGraphRouteRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/route/graph"];
   
-  NSArray<MFLocationComponent *> *points = [RCTConvert MFLocationComponentArray:data[@"points"]];
+  NSArray<MFLocationComponent *> *points = [RCTConvert MFLocationComponentArray:data[@"locations"]];
   MFGraphRouteParams *params = [[MFGraphRouteParams alloc] initWithLocations:points];
   params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
   params.language = [RCTConvert MFLanguageResult:data[@"language"]];
