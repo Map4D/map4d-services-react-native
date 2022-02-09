@@ -40,7 +40,6 @@ static MFServices *_services = nil;
       });
     }
 
-    //NSLog(@"SS | dictionary: %@", dictionary);
     resolve(dictionary);
   }];
 }

@@ -1,15 +1,19 @@
 import * as React from 'react';
-
 import { StyleSheet, View, Text, FlatList } from 'react-native';
-import { fetchSuggestion, fetchPlaceDetail, fetchTextSearch, fetchNearbySearch, fetchViewboxSearch, fetchGeocode, fetchDirections, fetchRouteETA, fetchDistanceMatrix, fetchGraphRoute } from 'react-native-map4d-services';
+import {
+  fetchSuggestion,
+  fetchPlaceDetail,
+  fetchTextSearch,
+  fetchNearbySearch,
+  fetchViewboxSearch,
+  fetchGeocode,
+  fetchDirections,
+  fetchRouteETA,
+  fetchDistanceMatrix,
+  fetchGraphRoute
+} from 'react-native-map4d-services';
 
 export default function App() {
-  // const [result, setResult] = React.useState<number | undefined>();
-
-  // React.useEffect(() => {
-  //   fetchSuggestion({text: 'abc'}).then( result => console.log('result:', result))
-  //   multiply(3, 7).then(setResult);
-  // }, []);
 
   const DATA = [
     {

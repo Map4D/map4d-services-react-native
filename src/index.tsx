@@ -17,10 +17,6 @@ const Map4dServices = NativeModules.Map4dServices
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Map4dServices.multiply(a, b);
-}
-
 export type MFLocationComponent = {
   latitude: number,
   longitude: number,
