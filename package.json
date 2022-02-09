@@ -32,9 +32,12 @@
     "bootstrap": "yarn example && yarn && yarn pods"
   },
   "keywords": [
+    "react",
     "react-native",
-    "ios",
-    "android"
+    "map4d",
+    "services",
+    "map4d-services",
+    "iotlink"
   ],
   "repository": "https://github.com/map4d/map4d-services-react-native",
   "author": "IOTLink <admin@iotlink.com.vn> (https://iotlink.com.vn/)",

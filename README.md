@@ -10,18 +10,15 @@ npm install react-native-map4d-services
 
 ## Usage
 
+E.g. Auto Suggest
+
 ```js
-import { multiply } from "react-native-map4d-services";
+import { fetchSuggestion } from "react-native-map4d-services";
 
 // ...
 
-const result = await multiply(3, 7);
+fetchSuggestion({text: 'abc'})
+.then(result => {
+  console.log('Suggestion:', result);
+})
 ```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT

@@ -137,7 +137,6 @@
 				47F7ED3B7971BE374F7B8635 /* Pods-Map4dServicesExample.debug.xcconfig */,
 				E00ACF0FDA8BF921659E2F9A /* Pods-Map4dServicesExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -569,7 +568,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.reactnativemap4dservices;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.map4d.services.reactnative.example;
 				PRODUCT_NAME = Map4dServicesExample;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -591,7 +590,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.reactnativemap4dservices;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.map4d.services.reactnative.example;
 				PRODUCT_NAME = Map4dServicesExample;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
