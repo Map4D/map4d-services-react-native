@@ -71,7 +71,7 @@ export type MFSuggestionParams = {
 export type MFTextSearchParams = {
   text: string,
   types?: string[],
-  datetime?: Date,
+  datetime?: number,
   location?: MFLocationComponent,
 }
 
@@ -81,7 +81,7 @@ export type MFNearbySearchParams = {
   text?: string,
   types?: string[],
   tags?: string[],
-  datetime?: Date,
+  datetime?: number,
 }
 
 export type MFViewboxSearchParams = {
@@ -89,7 +89,7 @@ export type MFViewboxSearchParams = {
   text?: string,
   types?: string[],
   tags?: string[],
-  datetime?: Date,
+  datetime?: number,
 }
 
 export type MFGeocodeParams = {
