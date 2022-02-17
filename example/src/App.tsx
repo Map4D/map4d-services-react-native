@@ -10,7 +10,8 @@ import {
   fetchDirections,
   fetchRouteETA,
   fetchDistanceMatrix,
-  fetchGraphRoute
+  fetchGraphRoute,
+  MFTravelMode
 } from 'react-native-map4d-services';
 
 export default function App() {
@@ -19,7 +20,14 @@ export default function App() {
     {
       title: 'Suggestion',
       onPress: () => {
-        fetchSuggestion({text: 'abc'}).then(result => {
+        fetchSuggestion({
+          text: 'abc',
+          acronym: true,
+          location: {
+            latitude: 16.036461,
+            longitude: 108.218159
+          }
+        }).then(result => {
           console.log('Suggestion:', result);
         });
       },
@@ -35,7 +43,16 @@ export default function App() {
     {
       title: 'Text Search',
       onPress: () => {
-        fetchTextSearch({text: 'abc'}).then(result => {
+        let date = new Date();
+        fetchTextSearch({
+          text: 'abc',
+          // types: ['atm', 'hotel'],
+          location: {
+            latitude: 16.036461,
+            longitude: 108.218159
+          },
+          datetime: date.getTime()
+        }).then(result => {
           console.log('Text Search:', result);
         })
       },
@@ -51,7 +68,7 @@ export default function App() {
           radius: 500,
           text: 'abc',
         }).then(result => {
-          console.log('Text Search:', result);
+          console.log('Nearby Search:', result);
         });
       }
     },
@@ -85,6 +102,25 @@ export default function App() {
         fetchDirections({
           origin: { latitude: 16.024634, longitude: 108.209217 },
           destination: { latitude: 16.020179, longitude: 108.211212 },
+          mode: MFTravelMode.car,
+          weighting: 'shortest',
+          language: 'vi',
+          waypoints: [
+            { latitude: 16.024634, longitude: 108.211212 }
+          ],
+          restriction: {
+            location: { latitude: 16.024634, longitude: 108.209217 },
+            radius: 30,
+            // viewbox: {
+            //   southwest: { latitude: 16.056453967981348, longitude: 108.19387435913086 },
+            //   northeast: { latitude: 16.093031550262133, longitude: 108.25927734375 },
+            // },
+            // path: [
+            //   { latitude: 16.024634, longitude: 108.209217 },
+            //   { latitude: 16.024834, longitude: 108.209217 }
+            // ],
+            types: ['motorway']
+          }
         }).then(result => {
           console.log('Directions:', result)
         })
@@ -99,6 +135,7 @@ export default function App() {
             { latitude: 16.039173, longitude: 108.210912, alias: "B" },
           ],
           destination: { latitude: 16.020179, longitude: 108.211212 },
+          mode: MFTravelMode.car
         }).then(result => {
           console.log('Route ETA:', result)
         })
@@ -131,6 +168,7 @@ export default function App() {
             { latitude: 16.044597, longitude: 108.217263 },
             { latitude: 16.082598, longitude: 108.221989 },
           ],
+          mode: MFTravelMode.car
         }).then(result => {
           console.log('Graph Route:', result)
         })
@@ -166,6 +204,6 @@ const styles = StyleSheet.create({
   item: {
     padding: 16,
     fontSize: 22,
-    height: 44,
+    height: 60,
   },
 });
