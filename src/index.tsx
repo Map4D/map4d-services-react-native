@@ -134,42 +134,42 @@ export type MFGraphRouteParams = {
   restriction?: MFRouteRestriction,
 }
 
-export function fetchSuggestion(params: MFSuggestionParams): Promise<object> {
+export function fetchSuggestion(params: MFSuggestionParams): Promise<any> {
   return Map4dServices.fetchSuggestion(params);
 }
 
-export function fetchPlaceDetail(placeId: string): Promise<object> {
+export function fetchPlaceDetail(placeId: string): Promise<any> {
   return Map4dServices.fetchPlaceDetail(placeId);
 }
 
-export function fetchTextSearch(params: MFTextSearchParams): Promise<object> {
+export function fetchTextSearch(params: MFTextSearchParams): Promise<any> {
   return Map4dServices.fetchTextSearch(params);
 }
 
-export function fetchNearbySearch(params: MFNearbySearchParams): Promise<object> {
+export function fetchNearbySearch(params: MFNearbySearchParams): Promise<any> {
   return Map4dServices.fetchNearbySearch(params);
 }
 
-export function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<object> {
+export function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<any> {
   return Map4dServices.fetchViewboxSearch(params);
 }
 
-export function fetchGeocode(params: MFGeocodeParams): Promise<object> {
+export function fetchGeocode(params: MFGeocodeParams): Promise<any> {
   return Map4dServices.fetchGeocode(params);
 }
 
-export function fetchDirections(params: MFDirectionsParams): Promise<object> {
+export function fetchDirections(params: MFDirectionsParams): Promise<any> {
   return Map4dServices.fetchDirections(params);
 }
 
-export function fetchRouteETA(params: MFRouteETAParams): Promise<object> {
+export function fetchRouteETA(params: MFRouteETAParams): Promise<any> {
   return Map4dServices.fetchRouteETA(params);
 }
 
-export function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<object> {
+export function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<any> {
   return Map4dServices.fetchDistanceMatrix(params);
 }
 
-export function fetchGraphRoute(params: MFGraphRouteParams): Promise<object> {
+export function fetchGraphRoute(params: MFGraphRouteParams): Promise<any> {
   return Map4dServices.fetchGraphRoute(params);
 }

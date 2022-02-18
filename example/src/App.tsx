@@ -27,16 +27,26 @@ export default function App() {
             latitude: 16.036461,
             longitude: 108.218159
           }
-        }).then(result => {
-          console.log('Suggestion:', result);
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Suggestions:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         });
       },
     },
     {
       title: 'Place Detail',
       onPress: () => {
-        fetchPlaceDetail('60dd389ef81cb14bc889d971').then(result => {
-          console.log('Place Detail:', result);
+        fetchPlaceDetail('60dd389ef81cb14bc889d971').then(response => {
+          if (response.code == 'ok') {
+            console.log('Place Detail:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         });
       },
     },
@@ -52,8 +62,13 @@ export default function App() {
             longitude: 108.218159
           },
           datetime: date.getTime()
-        }).then(result => {
-          console.log('Text Search:', result);
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Text Search Results:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         })
       },
     },
@@ -67,8 +82,13 @@ export default function App() {
           },
           radius: 500,
           text: 'abc',
-        }).then(result => {
-          console.log('Nearby Search:', result);
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Nearby Search Results:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         });
       }
     },
@@ -81,8 +101,13 @@ export default function App() {
             northeast: { latitude: 16.093031550262133, longitude: 108.25927734375 },
           },
           text: 'abc',
-        }).then(result => {
-          console.log('Viewbox Search:', result)
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Viewbox Search Results:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         })
       }
     },
@@ -91,8 +116,13 @@ export default function App() {
       onPress: () => {
         fetchGeocode({
           address: '31 Lê Văn Duyệt, Phường Nại Hiên Đông, Quận Sơn Trà, Thành Phố Đà Nẵng',
-        }).then(result => {
-          console.log('Geocode:', result)
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Geocode Results:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         })
       }
     },
@@ -121,8 +151,13 @@ export default function App() {
             // ],
             types: ['motorway']
           }
-        }).then(result => {
-          console.log('Directions:', result)
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Directions Result:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         })
       }
     },
@@ -136,8 +171,13 @@ export default function App() {
           ],
           destination: { latitude: 16.020179, longitude: 108.211212 },
           mode: MFTravelMode.car
-        }).then(result => {
-          console.log('Route ETA:', result)
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Route ETA Results:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         })
       }
     },
@@ -154,8 +194,13 @@ export default function App() {
             { latitude: 16.061040, longitude: 108.216700 },
             { latitude: 16.059145, longitude: 108.221297 }
           ]
-        }).then(result => {
-          console.log('Distance Matrix:', result)
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Distance Matrix Result:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         })
       }
     },
@@ -169,8 +214,13 @@ export default function App() {
             { latitude: 16.082598, longitude: 108.221989 },
           ],
           mode: MFTravelMode.car
-        }).then(result => {
-          console.log('Graph Route:', result)
+        }).then(response => {
+          if (response.code == 'ok') {
+            console.log('Graph Route Results:', response.result)
+          }
+          else {
+            console.log(`Error code: ${response.code}, message: ${response.message}`);
+          }
         })
       }
     },
