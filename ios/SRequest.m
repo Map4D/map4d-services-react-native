@@ -88,7 +88,7 @@
   params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
   params.language = [RCTConvert MFLanguageResult:data[@"language"]];
   params.weighting = [RCTConvert MFRouteWeighting:data[@"weighting"]];
-  params.avoid = [RCTConvert MFRouteRestriction:data[@"avoid"]];
+  params.restriction = [RCTConvert MFRouteRestriction:data[@"restriction"]];
   
   request.params = params;
   return request;
@@ -103,7 +103,7 @@
   params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
   params.language = [RCTConvert MFLanguageResult:data[@"language"]];
   params.weighting = [RCTConvert MFRouteWeighting:data[@"weighting"]];
-  params.avoid = [RCTConvert MFRouteRestriction:data[@"avoid"]];
+  params.restriction = [RCTConvert MFRouteRestriction:data[@"restriction"]];
   
   request.params = params;
   request.method = MFRequestMethodPost;
@@ -119,7 +119,7 @@
   params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
   params.language = [RCTConvert MFLanguageResult:data[@"language"]];
   params.weighting = [RCTConvert MFRouteWeighting:data[@"weighting"]];
-  params.avoid = [RCTConvert MFRouteRestriction:data[@"avoid"]];
+  params.restriction = [RCTConvert MFRouteRestriction:data[@"restriction"]];
   
   request.params = params;
   return request;
@@ -133,7 +133,7 @@
   params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
   params.language = [RCTConvert MFLanguageResult:data[@"language"]];
   params.weighting = [RCTConvert MFRouteWeighting:data[@"weighting"]];
-  params.avoid = [RCTConvert MFRouteRestriction:data[@"avoid"]];
+  params.restriction = [RCTConvert MFRouteRestriction:data[@"restriction"]];
   
   request.params = params;
   return request;
