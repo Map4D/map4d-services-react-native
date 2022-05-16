@@ -33,7 +33,7 @@ public class SRequest {
       String location = SConverter.toLocation(params.getMap("location"));
       requestParams.put("location", location);
     }
-    serviceOptionsBuilder.requestParams(requestParams);
+    serviceOptionsBuilder.params(requestParams);
     return serviceOptionsBuilder.build();
   }
 
@@ -73,7 +73,7 @@ public class SRequest {
       String datetime = SConverter.toDatetime(params.getDouble("datetime"));
       requestParams.put("datetime", datetime);
     }
-    serviceOptionsBuilder.requestParams(requestParams);
+    serviceOptionsBuilder.params(requestParams);
     return serviceOptionsBuilder.build();
   }
 
@@ -113,7 +113,7 @@ public class SRequest {
       requestParams.put("datetime", datetime);
     }
 
-    serviceOptionsBuilder.requestParams(requestParams);
+    serviceOptionsBuilder.params(requestParams);
     return serviceOptionsBuilder.build();
   }
 
@@ -147,7 +147,7 @@ public class SRequest {
       String datetime = SConverter.toDatetime(params.getDouble("datetime"));
       requestParams.put("datetime", datetime);
     }
-    serviceOptionsBuilder.requestParams(requestParams);
+    serviceOptionsBuilder.params(requestParams);
     return serviceOptionsBuilder.build();
   }
 
@@ -171,7 +171,7 @@ public class SRequest {
       String viewbox = SConverter.toViewbox(params.getMap("viewbox"));
       requestParams.put("viewbox", viewbox);
     }
-    serviceOptionsBuilder.requestParams(requestParams);
+    serviceOptionsBuilder.params(requestParams);
     return serviceOptionsBuilder.build();
   }
 
@@ -225,7 +225,7 @@ public class SRequest {
       }
     }
 
-    serviceOptionsBuilder.requestParams(requestParams);
+    serviceOptionsBuilder.params(requestParams);
     return serviceOptionsBuilder.build();
   }
 
@@ -326,7 +326,7 @@ public class SRequest {
       }
     }
 
-    serviceOptionsBuilder.requestParams(requestParams);
+    serviceOptionsBuilder.params(requestParams);
     return serviceOptionsBuilder.build();
   }
 
@@ -370,7 +370,7 @@ public class SRequest {
       }
     }
 
-    serviceOptionsBuilder.requestParams(requestParams);
+    serviceOptionsBuilder.params(requestParams);
     return serviceOptionsBuilder.build();
   }
 }
