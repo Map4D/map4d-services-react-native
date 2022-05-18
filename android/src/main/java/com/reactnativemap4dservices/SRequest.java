@@ -19,17 +19,17 @@ public class SRequest {
     serviceOptionsBuilder.method(MFMethod.GET);
 
     MFRequestParams requestParams = new MFRequestParams();
-    if (params.hasKey("text")) {
+    if (params.hasKey("text") && !params.isNull("text")) {
       String text = params.getString("text");
       requestParams.put("text", text);
     }
 
-    if (params.hasKey("acronym")) {
+    if (params.hasKey("acronym") && !params.isNull("acronym")) {
       boolean acronym = params.getBoolean("acronym");
       requestParams.put("acronym", String.valueOf(acronym));
     }
 
-    if (params.hasKey("location")) {
+    if (params.hasKey("location") && !params.isNull("location")) {
       String location = SConverter.toLocation(params.getMap("location"));
       requestParams.put("location", location);
     }
@@ -54,22 +54,22 @@ public class SRequest {
     serviceOptionsBuilder.method(MFMethod.GET);
 
     MFRequestParams requestParams = new MFRequestParams();
-    if (params.hasKey("text")) {
+    if (params.hasKey("text") && !params.isNull("text")) {
       String text = params.getString("text");
       requestParams.put("text", text);
     }
 
-    if (params.hasKey("location")) {
+    if (params.hasKey("location") && !params.isNull("location")) {
       String location = SConverter.toLocation(params.getMap("location"));
       requestParams.put("location", location);
     }
 
-    if (params.hasKey("types")) {
+    if (params.hasKey("types")  && !params.isNull("types")) {
       String types = SConverter.toTypes(params.getArray("types"));
       requestParams.put("types", types);
     }
 
-    if (params.hasKey("datetime")) {
+    if (params.hasKey("datetime") && !params.isNull("datetime")) {
       String datetime = SConverter.toDatetime(params.getDouble("datetime"));
       requestParams.put("datetime", datetime);
     }
@@ -83,32 +83,32 @@ public class SRequest {
     serviceOptionsBuilder.method(MFMethod.GET);
 
     MFRequestParams requestParams = new MFRequestParams();
-    if (params.hasKey("location")) {
+    if (params.hasKey("location") && !params.isNull("location")) {
       String location = SConverter.toLocation(params.getMap("location"));
       requestParams.put("location", location);
     }
 
-    if (params.hasKey("radius")) {
+    if (params.hasKey("radius")  && !params.isNull("radius")) {
       String radius = String.valueOf(params.getInt("radius"));
       requestParams.put("radius", radius);
     }
 
-    if (params.hasKey("text")) {
+    if (params.hasKey("text") && !params.isNull("text")) {
       String text = params.getString("text");
       requestParams.put("text", text);
     }
 
-    if (params.hasKey("types")) {
+    if (params.hasKey("types")  && !params.isNull("types")) {
       String types = SConverter.toTypes(params.getArray("types"));
       requestParams.put("types", types);
     }
 
-    if (params.hasKey("tags")) {
+    if (params.hasKey("tags") && !params.isNull("tags")) {
       String tags = SConverter.toTags(params.getArray("tags"));
       requestParams.put("tags", tags);
     }
 
-    if (params.hasKey("datetime")) {
+    if (params.hasKey("datetime") && !params.isNull("datetime")) {
       String datetime = SConverter.toDatetime(params.getDouble("datetime"));
       requestParams.put("datetime", datetime);
     }
@@ -123,27 +123,27 @@ public class SRequest {
     serviceOptionsBuilder.method(MFMethod.GET);
 
     MFRequestParams requestParams = new MFRequestParams();
-    if (params.hasKey("viewbox")) {
+    if (params.hasKey("viewbox") && !params.isNull("viewbox")) {
       String viewbox = SConverter.toViewbox(params.getMap("viewbox"));
       requestParams.put("viewbox", viewbox);
     }
 
-    if (params.hasKey("text")) {
+    if (params.hasKey("text") && !params.isNull("text")) {
       String text = params.getString("text");
       requestParams.put("text", text);
     }
 
-    if (params.hasKey("types")) {
+    if (params.hasKey("types") && !params.isNull("types")) {
       String types = SConverter.toTypes(params.getArray("types"));
       requestParams.put("types", types);
     }
 
-    if (params.hasKey("tags")) {
+    if (params.hasKey("tags") && !params.isNull("tags")) {
       String tags = SConverter.toTags(params.getArray("tags"));
       requestParams.put("tags", tags);
     }
 
-    if (params.hasKey("datetime")) {
+    if (params.hasKey("datetime") && !params.isNull("datetime")) {
       String datetime = SConverter.toDatetime(params.getDouble("datetime"));
       requestParams.put("datetime", datetime);
     }
@@ -157,17 +157,17 @@ public class SRequest {
     serviceOptionsBuilder.method(MFMethod.GET);
 
     MFRequestParams requestParams = new MFRequestParams();
-    if (params.hasKey("address")) {
+    if (params.hasKey("address") && !params.isNull("address")) {
       String address = params.getString("address");
       requestParams.put("address", address);
     }
 
-    if (params.hasKey("location")) {
+    if (params.hasKey("location") && !params.isNull("location")) {
       String location = SConverter.toLocation(params.getMap("location"));
       requestParams.put("location", location);
     }
 
-    if (params.hasKey("viewbox")) {
+    if (params.hasKey("viewbox") && !params.isNull("viewbox")) {
       String viewbox = SConverter.toViewbox(params.getMap("viewbox"));
       requestParams.put("viewbox", viewbox);
     }
@@ -182,37 +182,37 @@ public class SRequest {
 
     MFRequestParams requestParams = new MFRequestParams();
 
-    if (params.hasKey("origin")) {
+    if (params.hasKey("origin") && !params.isNull("origin")) {
       String origin = SConverter.toLocation(params.getMap("origin"));
       requestParams.put("origin", origin);
     }
 
-    if (params.hasKey("destination")) {
+    if (params.hasKey("destination") && !params.isNull("destination")) {
       String destination = SConverter.toLocation(params.getMap("destination"));
       requestParams.put("destination", destination);
     }
 
-    if (params.hasKey("mode")) {
+    if (params.hasKey("mode") && !params.isNull("mode")) {
       String mode = params.getString("mode");
       requestParams.put("mode", mode);
     }
 
-    if (params.hasKey("weighting")) {
+    if (params.hasKey("weighting") && !params.isNull("weighting")) {
       int weighting = SConverter.toWeighting(params.getString("weighting"));
       requestParams.put("weighting", String.valueOf(weighting));
     }
 
-    if (params.hasKey("language")) {
+    if (params.hasKey("language") && !params.isNull("language")) {
       String language = params.getString("language");
       requestParams.put("language", language);
     }
 
-    if (params.hasKey("waypoints")) {
+    if (params.hasKey("waypoints") && !params.isNull("waypoints")) {
       String waypoints = SConverter.toLocationList(params.getArray("waypoints"));
       requestParams.put("points", waypoints);
     }
 
-    if (params.hasKey("restriction")) {
+    if (params.hasKey("restriction") && !params.isNull("restriction")) {
       ReadableMap restrictionMap = params.getMap("restriction");
       String avoid = SConverter.toAvoid(restrictionMap);
       if (avoid != null && !avoid.isEmpty()) {
@@ -236,32 +236,32 @@ public class SRequest {
 
     JSONObject jsonObject = new JSONObject();
     try {
-      if (params.hasKey("origins")) {
+      if (params.hasKey("origins") && !params.isNull("origins")) {
         JSONArray origins = SConverter.toOriginJsonArray(params.getArray("origins"));
         jsonObject.put("origins", origins);
       }
 
-      if (params.hasKey("destination")) {
+      if (params.hasKey("destination") && !params.isNull("destination")) {
         String destination = SConverter.toLocation(params.getMap("destination"));
         jsonObject.put("destination", destination);
       }
 
-      if (params.hasKey("mode")) {
+      if (params.hasKey("mode") && !params.isNull("mode")) {
         String mode = params.getString("mode");
         jsonObject.put("mode", mode);
       }
 
-      if (params.hasKey("weighting")) {
+      if (params.hasKey("weighting") && !params.isNull("weighting")) {
         int weighting = SConverter.toWeighting(params.getString("weighting"));
         jsonObject.put("weighting", String.valueOf(weighting));
       }
 
-      if (params.hasKey("language")) {
+      if (params.hasKey("language") && !params.isNull("language")) {
         String language = params.getString("language");
         jsonObject.put("language", language);
       }
 
-      if (params.hasKey("restriction")) {
+      if (params.hasKey("restriction") && !params.isNull("restriction")) {
         ReadableMap restrictionMap = params.getMap("restriction");
         String avoid = SConverter.toAvoid(restrictionMap);
         if (avoid != null && !avoid.isEmpty()) {
@@ -288,32 +288,32 @@ public class SRequest {
 
     MFRequestParams requestParams = new MFRequestParams();
 
-    if (params.hasKey("origins")) {
+    if (params.hasKey("origins") && !params.isNull("origins")) {
       String origins = SConverter.toLocationList(params.getArray("origins"));
       requestParams.put("origins", origins);
     }
 
-    if (params.hasKey("destinations")) {
+    if (params.hasKey("destinations") && !params.isNull("destinations")) {
       String destinations = SConverter.toLocationList(params.getArray("destinations"));
       requestParams.put("destinations", destinations);
     }
 
-    if (params.hasKey("mode")) {
+    if (params.hasKey("mode") && !params.isNull("mode")) {
       String mode = params.getString("mode");
       requestParams.put("mode", mode);
     }
 
-    if (params.hasKey("weighting")) {
+    if (params.hasKey("weighting") && !params.isNull("weighting")) {
       int weighting = SConverter.toWeighting(params.getString("weighting"));
       requestParams.put("weighting", String.valueOf(weighting));
     }
 
-    if (params.hasKey("language")) {
+    if (params.hasKey("language") && !params.isNull("language")) {
       String language = params.getString("language");
       requestParams.put("language", language);
     }
 
-    if (params.hasKey("restriction")) {
+    if (params.hasKey("restriction") && !params.isNull("restriction")) {
       ReadableMap restrictionMap = params.getMap("restriction");
       String avoid = SConverter.toAvoid(restrictionMap);
       if (avoid != null && !avoid.isEmpty()) {
@@ -337,27 +337,27 @@ public class SRequest {
 
     MFRequestParams requestParams = new MFRequestParams();
 
-    if (params.hasKey("locations")) {
+    if (params.hasKey("locations") && !params.isNull("locations")) {
       String points = SConverter.toLocationList(params.getArray("locations"));
       requestParams.put("points", points);
     }
 
-    if (params.hasKey("mode")) {
+    if (params.hasKey("mode") && !params.isNull("mode")) {
       String mode = params.getString("mode");
       requestParams.put("mode", mode);
     }
 
-    if (params.hasKey("weighting")) {
+    if (params.hasKey("weighting") && !params.isNull("weighting")) {
       int weighting = SConverter.toWeighting(params.getString("weighting"));
       requestParams.put("weighting", String.valueOf(weighting));
     }
 
-    if (params.hasKey("language")) {
+    if (params.hasKey("language") && !params.isNull("language")) {
       String language = params.getString("language");
       requestParams.put("language", language);
     }
 
-    if (params.hasKey("restriction")) {
+    if (params.hasKey("restriction") && !params.isNull("restriction")) {
       ReadableMap restrictionMap = params.getMap("restriction");
       String avoid = SConverter.toAvoid(restrictionMap);
       if (avoid != null && !avoid.isEmpty()) {
