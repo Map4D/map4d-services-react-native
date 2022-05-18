@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.WritableNativeMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,16 +30,20 @@ class SClient {
               final WritableMap data = SJsonUtils.convertJsonToMap(json);
               promise.resolve(data);
             } catch (JSONException e) {
-              promise.reject(
-                "Map4dServices",
-                "Error when parse JSON data result !");
+              WritableMap result = new WritableNativeMap();
+              result.putString("code", "Map4dServices");
+              result.putString("message", "Error when parse JSON data result !");
+              promise.resolve(result);
             }
           }
         }
 
         @Override
         public void onError(String code, String message) {
-          promise.reject(code, message);
+          WritableMap result = new WritableNativeMap();
+          result.putString("code", code);
+          result.putString("message", message);
+          promise.resolve(result);
         }
       });
   }
