@@ -6,7 +6,7 @@
 //
 
 #import "SRequest.h"
-#import "RCTConvert+Services.h"
+#import "SParamConvert.h"
 
 @implementation SRequest
 
@@ -15,8 +15,8 @@
 + (MFServiceRequest *)buildGeocodingRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/v2/geocode"];
   MFGeocodeParams *params = [[MFGeocodeParams alloc] initWithAddress:data[@"address"]];
-  params.location = [RCTConvert MFLocationComponent:data[@"location"]];
-  params.viewbox = [RCTConvert MFViewboxComponent:data[@"viewbox"]];
+  params.location = [SParamConvert MFLocationComponent:data[@"location"]];
+  params.viewbox = [SParamConvert MFViewboxComponent:data[@"viewbox"]];
   
   request.params = params;
   return request;
@@ -32,10 +32,9 @@
 + (MFServiceRequest *)buildTextSearchRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/place/text-search"];
   MFTextSearchParams *params = [[MFTextSearchParams alloc] initWithText:data[@"text"]];
-  
-  params.types = data[@"types"];
-  params.location = [RCTConvert MFLocationComponent:data[@"location"]];
-  params.datetime = [RCTConvert NSDate:data[@"datetime"]];
+  params.types = [SParamConvert NSStringArray:data[@"types"]];
+  params.location = [SParamConvert MFLocationComponent:data[@"location"]];
+  params.datetime = [SParamConvert NSDate:data[@"datetime"]];
   
   request.params = params;
   return request;
@@ -43,12 +42,12 @@
 
 + (MFServiceRequest *)buildNearbySearchRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/place/nearby-search"];
-  MFNearbySearchParams *params = [[MFNearbySearchParams alloc] initWithLocation:[RCTConvert MFLocationComponent:data[@"location"]]
-                                                                         radius:[RCTConvert NSUInteger:data[@"radius"]]
-                                                                           text:data[@"text"]];
-  params.types = data[@"types"];
-  params.tags = data[@"tags"];
-  params.datetime = [RCTConvert NSDate:data[@"datetime"]];
+  MFNearbySearchParams *params = [[MFNearbySearchParams alloc] initWithLocation:[SParamConvert MFLocationComponent:data[@"location"]]
+                                                                         radius:[SParamConvert NSUInteger:data[@"radius"]]
+                                                                           text:[SParamConvert NSString:data[@"text"]]];
+  params.types = [SParamConvert NSStringArray:data[@"types"]];
+  params.tags = [SParamConvert NSStringArray:data[@"tags"]];
+  params.datetime = [SParamConvert NSDate:data[@"datetime"]];
   
   request.params = params;
   return request;
@@ -56,11 +55,11 @@
 
 + (MFServiceRequest *)buildViewboxSearchRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/place/viewbox-search"];
-  MFViewboxSearchParams *params = [[MFViewboxSearchParams alloc] initWithViewbox:[RCTConvert MFViewboxComponent:data[@"viewbox"]]
-                                                                            text:data[@"text"]];
-  params.types = data[@"types"];
-  params.tags = data[@"tags"];
-  params.datetime = [RCTConvert NSDate:data[@"datetime"]];
+  MFViewboxSearchParams *params = [[MFViewboxSearchParams alloc] initWithViewbox:[SParamConvert MFViewboxComponent:data[@"viewbox"]]
+                                                                            text:[SParamConvert NSString:data[@"text"]]];
+  params.types = [SParamConvert NSStringArray:data[@"types"]];
+  params.tags = [SParamConvert NSStringArray:data[@"tags"]];
+  params.datetime = [SParamConvert NSDate:data[@"datetime"]];
   
   request.params = params;
   return request;
@@ -68,9 +67,9 @@
 
 + (MFServiceRequest *)buildSuggestionsRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/autosuggest"];
-  MFSuggestionParams *params = [[MFSuggestionParams alloc] initWithText:data[@"text"]];
-  params.acronym = [RCTConvert BOOL:data[@"acronym"]];
-  params.location = [RCTConvert MFLocationComponent:data[@"location"]];
+  MFSuggestionParams *params = [[MFSuggestionParams alloc] initWithText:[SParamConvert NSString:data[@"text"]]];
+  params.location = [SParamConvert MFLocationComponent:data[@"location"]];
+  params.acronym = [SParamConvert BOOL:data[@"acronym"] fallback:params.acronym];
   
   request.params = params;
   return request;
@@ -81,14 +80,14 @@
 + (MFServiceRequest *)buildDirectionsRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/route"];
   
-  MFLocationComponent *origin = [RCTConvert MFLocationComponent:data[@"origin"]];
-  MFLocationComponent *destination = [RCTConvert MFLocationComponent:data[@"destination"]];
+  MFLocationComponent *origin = [SParamConvert MFLocationComponent:data[@"origin"]];
+  MFLocationComponent *destination = [SParamConvert MFLocationComponent:data[@"destination"]];
   MFDirectionsParams *params = [[MFDirectionsParams alloc] initWithOrigin:origin destination:destination];
-  params.waypoints = [RCTConvert MFLocationComponentArray:data[@"points"]];
-  params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
-  params.language = [RCTConvert MFLanguageResult:data[@"language"]];
-  params.weighting = [RCTConvert MFRouteWeighting:data[@"weighting"]];
-  params.restriction = [RCTConvert MFRouteRestriction:data[@"restriction"]];
+  params.waypoints = [SParamConvert MFLocationComponentArray:data[@"points"]];
+  params.mode = [SParamConvert MFTravelMode:data[@"mode"] fallback:params.mode];
+  params.language = [SParamConvert MFLanguageResult:data[@"language"] fallback:params.language];
+  params.weighting = [SParamConvert MFRouteWeighting:data[@"weighting"] fallback:params.weighting];
+  params.restriction = [SParamConvert MFRouteRestriction:data[@"restriction"]];
   
   request.params = params;
   return request;
@@ -97,13 +96,13 @@
 + (MFServiceRequest *)buildRouteETARequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/route/eta"];
   
-  NSArray<MFLocationComponent *> *origins = [RCTConvert MFLocationComponentArray:data[@"origins"]];
-  MFLocationComponent *destination = [RCTConvert MFLocationComponent:data[@"destination"]];
+  NSArray<MFLocationComponent *> *origins = [SParamConvert MFLocationComponentArray:data[@"origins"]];
+  MFLocationComponent *destination = [SParamConvert MFLocationComponent:data[@"destination"]];
   MFRouteETAParams *params = [[MFRouteETAParams alloc] initWithOrigins:origins destination:destination];
-  params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
-  params.language = [RCTConvert MFLanguageResult:data[@"language"]];
-  params.weighting = [RCTConvert MFRouteWeighting:data[@"weighting"]];
-  params.restriction = [RCTConvert MFRouteRestriction:data[@"restriction"]];
+  params.mode = [SParamConvert MFTravelMode:data[@"mode"] fallback:params.mode];
+  params.language = [SParamConvert MFLanguageResult:data[@"language"] fallback:params.language];
+  params.weighting = [SParamConvert MFRouteWeighting:data[@"weighting"] fallback:params.weighting];
+  params.restriction = [SParamConvert MFRouteRestriction:data[@"restriction"]];
   
   request.params = params;
   request.method = MFRequestMethodPost;
@@ -113,13 +112,13 @@
 + (MFServiceRequest *)buildDistanceMatrixRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/route/matrix"];
   
-  NSArray<MFLocationComponent *> *origins = [RCTConvert MFLocationComponentArray:data[@"origins"]];
-  NSArray<MFLocationComponent *> *destinations = [RCTConvert MFLocationComponentArray:data[@"destinations"]];
+  NSArray<MFLocationComponent *> *origins = [SParamConvert MFLocationComponentArray:data[@"origins"]];
+  NSArray<MFLocationComponent *> *destinations = [SParamConvert MFLocationComponentArray:data[@"destinations"]];
   MFDistanceMatrixParams *params = [[MFDistanceMatrixParams alloc] initWithOrigins:origins destinations:destinations];
-  params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
-  params.language = [RCTConvert MFLanguageResult:data[@"language"]];
-  params.weighting = [RCTConvert MFRouteWeighting:data[@"weighting"]];
-  params.restriction = [RCTConvert MFRouteRestriction:data[@"restriction"]];
+  params.mode = [SParamConvert MFTravelMode:data[@"mode"] fallback:params.mode];
+  params.language = [SParamConvert MFLanguageResult:data[@"language"] fallback:params.language];
+  params.weighting = [SParamConvert MFRouteWeighting:data[@"weighting"] fallback:params.weighting];
+  params.restriction = [SParamConvert MFRouteRestriction:data[@"restriction"]];
   
   request.params = params;
   return request;
@@ -128,12 +127,12 @@
 + (MFServiceRequest *)buildGraphRouteRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/route/graph"];
   
-  NSArray<MFLocationComponent *> *points = [RCTConvert MFLocationComponentArray:data[@"locations"]];
+  NSArray<MFLocationComponent *> *points = [SParamConvert MFLocationComponentArray:data[@"locations"]];
   MFGraphRouteParams *params = [[MFGraphRouteParams alloc] initWithLocations:points];
-  params.mode = [RCTConvert MFTravelMode:data[@"mode"]];
-  params.language = [RCTConvert MFLanguageResult:data[@"language"]];
-  params.weighting = [RCTConvert MFRouteWeighting:data[@"weighting"]];
-  params.restriction = [RCTConvert MFRouteRestriction:data[@"restriction"]];
+  params.mode = [SParamConvert MFTravelMode:data[@"mode"] fallback:params.mode];
+  params.language = [SParamConvert MFLanguageResult:data[@"language"] fallback:params.language];
+  params.weighting = [SParamConvert MFRouteWeighting:data[@"weighting"] fallback:params.weighting];
+  params.restriction = [SParamConvert MFRouteRestriction:data[@"restriction"]];
   
   request.params = params;
   return request;
