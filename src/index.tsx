@@ -108,26 +108,9 @@ export type MFDirectionsParams = {
   restriction?: MFRouteRestriction,
 }
 
-export type MFRouteETAParams = {
-  origins: MFLocationComponent[],
-  destination: MFLocationComponent,
-  mode?: MFTravelMode | string,
-  weighting?: MFRouteWeighting | string,
-  language?: MFLanguageResult | string,
-  restriction?: MFRouteRestriction,
-}
-
 export type MFDistanceMatrixParams = {
   origins: MFLocationComponent[],
   destinations: MFLocationComponent[],
-  mode?: MFTravelMode | string,
-  weighting?: MFRouteWeighting | string,
-  language?: MFLanguageResult | string,
-  restriction?: MFRouteRestriction,
-}
-
-export type MFGraphRouteParams = {
-  locations: MFLocationComponent[],
   mode?: MFTravelMode | string,
   weighting?: MFRouteWeighting | string,
   language?: MFLanguageResult | string,
@@ -162,14 +145,6 @@ export function fetchDirections(params: MFDirectionsParams): Promise<any> {
   return Map4dServices.fetchDirections(params);
 }
 
-export function fetchRouteETA(params: MFRouteETAParams): Promise<any> {
-  return Map4dServices.fetchRouteETA(params);
-}
-
 export function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<any> {
   return Map4dServices.fetchDistanceMatrix(params);
-}
-
-export function fetchGraphRoute(params: MFGraphRouteParams): Promise<any> {
-  return Map4dServices.fetchGraphRoute(params);
 }

@@ -8,9 +8,7 @@ import {
   fetchViewboxSearch,
   fetchGeocode,
   fetchDirections,
-  fetchRouteETA,
   fetchDistanceMatrix,
-  fetchGraphRoute,
   MFTravelMode
 } from 'react-native-map4d-services';
 
@@ -162,26 +160,6 @@ export default function App() {
       }
     },
     {
-      title: 'Route ETA',
-      onPress: () => {
-        fetchRouteETA({
-          origins: [
-            { latitude: 16.024634, longitude: 108.209217, alias: "A" },
-            { latitude: 16.039173, longitude: 108.210912, alias: "B" },
-          ],
-          destination: { latitude: 16.020179, longitude: 108.211212 },
-          mode: MFTravelMode.car
-        }).then(response => {
-          if (response.code == 'ok') {
-            console.log('Route ETA Results:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        })
-      }
-    },
-    {
       title: 'Distance Matrix',
       onPress: () => {
         fetchDistanceMatrix({
@@ -197,26 +175,6 @@ export default function App() {
         }).then(response => {
           if (response.code == 'ok') {
             console.log('Distance Matrix Result:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        })
-      }
-    },
-    {
-      title: 'Graph Route',
-      onPress: () => {
-        fetchGraphRoute({
-          locations: [
-            { latitude: 16.039173, longitude: 108.210912 },
-            { latitude: 16.044597, longitude: 108.217263 },
-            { latitude: 16.082598, longitude: 108.221989 },
-          ],
-          mode: MFTravelMode.car
-        }).then(response => {
-          if (response.code == 'ok') {
-            console.log('Graph Route Results:', response.result)
           }
           else {
             console.log(`Error code: ${response.code}, message: ${response.message}`);
