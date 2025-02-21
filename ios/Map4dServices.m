@@ -57,25 +57,11 @@ RCT_EXPORT_METHOD(fetchDirections:(id)params
   [SClient fireRequest:[SRequest buildDirectionsRequestWithData:params] resolve:resolve reject:reject];
 }
 
-/* Route | ETA */
-RCT_EXPORT_METHOD(fetchRouteETA:(id)params
-                  withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject) {
-  [SClient fireRequest:[SRequest buildRouteETARequestWithData:params] resolve:resolve reject:reject];
-}
-
 /* Route | Distance matrix */
 RCT_EXPORT_METHOD(fetchDistanceMatrix:(id)params
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject) {
   [SClient fireRequest:[SRequest buildDistanceMatrixRequestWithData:params] resolve:resolve reject:reject];
-}
-
-/* Route | Graph route */
-RCT_EXPORT_METHOD(fetchGraphRoute:(id)params
-                  withResolver:(RCTPromiseResolveBlock)resolve
-                  withRejecter:(RCTPromiseRejectBlock)reject) {
-  [SClient fireRequest:[SRequest buildGraphRouteRequestWithData:params] resolve:resolve reject:reject];
 }
 
 @end

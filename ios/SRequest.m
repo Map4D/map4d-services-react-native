@@ -93,42 +93,12 @@
   return request;
 }
 
-+ (MFServiceRequest *)buildRouteETARequestWithData:(NSDictionary *)data {
-  MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/route/eta"];
-  
-  NSArray<MFLocationComponent *> *origins = [SParamConvert MFLocationComponentArray:data[@"origins"]];
-  MFLocationComponent *destination = [SParamConvert MFLocationComponent:data[@"destination"]];
-  MFRouteETAParams *params = [[MFRouteETAParams alloc] initWithOrigins:origins destination:destination];
-  params.mode = [SParamConvert MFTravelMode:data[@"mode"] fallback:params.mode];
-  params.language = [SParamConvert MFLanguageResult:data[@"language"] fallback:params.language];
-  params.weighting = [SParamConvert MFRouteWeighting:data[@"weighting"] fallback:params.weighting];
-  params.restriction = [SParamConvert MFRouteRestriction:data[@"restriction"]];
-  
-  request.params = params;
-  request.method = MFRequestMethodPost;
-  return request;
-}
-
 + (MFServiceRequest *)buildDistanceMatrixRequestWithData:(NSDictionary *)data {
   MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/route/matrix"];
   
   NSArray<MFLocationComponent *> *origins = [SParamConvert MFLocationComponentArray:data[@"origins"]];
   NSArray<MFLocationComponent *> *destinations = [SParamConvert MFLocationComponentArray:data[@"destinations"]];
   MFDistanceMatrixParams *params = [[MFDistanceMatrixParams alloc] initWithOrigins:origins destinations:destinations];
-  params.mode = [SParamConvert MFTravelMode:data[@"mode"] fallback:params.mode];
-  params.language = [SParamConvert MFLanguageResult:data[@"language"] fallback:params.language];
-  params.weighting = [SParamConvert MFRouteWeighting:data[@"weighting"] fallback:params.weighting];
-  params.restriction = [SParamConvert MFRouteRestriction:data[@"restriction"]];
-  
-  request.params = params;
-  return request;
-}
-
-+ (MFServiceRequest *)buildGraphRouteRequestWithData:(NSDictionary *)data {
-  MFServiceRequest *request = [[MFServiceRequest alloc] initWithPath:@"/sdk/route/graph"];
-  
-  NSArray<MFLocationComponent *> *points = [SParamConvert MFLocationComponentArray:data[@"locations"]];
-  MFGraphRouteParams *params = [[MFGraphRouteParams alloc] initWithLocations:points];
   params.mode = [SParamConvert MFTravelMode:data[@"mode"] fallback:params.mode];
   params.language = [SParamConvert MFLanguageResult:data[@"language"] fallback:params.language];
   params.weighting = [SParamConvert MFRouteWeighting:data[@"weighting"] fallback:params.weighting];
