@@ -117,34 +117,80 @@ export type MFDistanceMatrixParams = {
   restriction?: MFRouteRestriction,
 }
 
-export function fetchSuggestion(params: MFSuggestionParams): Promise<any> {
+type MFServiceResponse<T> = {
+  code: string,
+  message: string,
+  result: T
+}
+
+/* Place | Suggestions */
+
+export type MFSuggestionResult = any
+export type MFSuggestionResponse = MFServiceResponse<MFSuggestionResult>
+
+export function fetchSuggestion(params: MFSuggestionParams): Promise<MFSuggestionResponse> {
   return Map4dServices.fetchSuggestion(params);
 }
 
-export function fetchPlaceDetail(placeId: string): Promise<any> {
+/* Place | Detail */
+
+export type MFPlaceDetailResult = any
+export type MFPlaceDetailResponse = MFServiceResponse<MFPlaceDetailResult>
+
+export function fetchPlaceDetail(placeId: string): Promise<MFPlaceDetailResponse> {
   return Map4dServices.fetchPlaceDetail(placeId);
 }
 
-export function fetchTextSearch(params: MFTextSearchParams): Promise<any> {
+/* Place | Text search */
+
+export type MFTextSearchResult = any
+export type MFTextSearchResponse = MFServiceResponse<MFTextSearchResult>
+
+export function fetchTextSearch(params: MFTextSearchParams): Promise<MFTextSearchResponse> {
   return Map4dServices.fetchTextSearch(params);
 }
 
-export function fetchNearbySearch(params: MFNearbySearchParams): Promise<any> {
+/* Place | Nearby search */
+
+export type MFNearbySearchResult = any
+export type MFNearbySearchResponse = MFServiceResponse<MFNearbySearchResult>
+
+export function fetchNearbySearch(params: MFNearbySearchParams): Promise<MFNearbySearchResponse> {
   return Map4dServices.fetchNearbySearch(params);
 }
 
-export function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<any> {
+/* Place | Viewbox search */
+
+export type MFViewboxSearchResult = any
+export type MFViewboxSearchResponse = MFServiceResponse<MFViewboxSearchResult>
+
+export function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<MFViewboxSearchResponse> {
   return Map4dServices.fetchViewboxSearch(params);
 }
 
-export function fetchGeocode(params: MFGeocodeParams): Promise<any> {
+/* Place | Geocode */
+
+export type MFGeocodeResult = any
+export type MFGeocodeResponse = MFServiceResponse<MFGeocodeResult>
+
+export function fetchGeocode(params: MFGeocodeParams): Promise<MFGeocodeResponse> {
   return Map4dServices.fetchGeocode(params);
 }
 
-export function fetchDirections(params: MFDirectionsParams): Promise<any> {
+/* Route | Directions */
+
+export type MFDirectionsResult = any
+export type MFDirectionsResponse = MFServiceResponse<MFDirectionsResult>
+
+export function fetchDirections(params: MFDirectionsParams): Promise<MFDirectionsResponse> {
   return Map4dServices.fetchDirections(params);
 }
 
-export function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<any> {
+/* Route | Distance matrix */
+
+export type MFDistanceMatrixResult = any
+export type MFDistanceMatrixResponse = MFServiceResponse<MFDistanceMatrixResult>
+
+export function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<MFDistanceMatrixResponse> {
   return Map4dServices.fetchDistanceMatrix(params);
 }

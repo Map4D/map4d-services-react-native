@@ -9,7 +9,8 @@ import {
   fetchGeocode,
   fetchDirections,
   fetchDistanceMatrix,
-  MFTravelMode
+  MFTravelMode,
+  MFSuggestionResponse
 } from 'react-native-map4d-services';
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
             latitude: 16.036461,
             longitude: 108.218159
           }
-        }).then(response => {
+        }).then((response: MFSuggestionResponse) => {
           if (response.code == 'ok') {
             console.log('Suggestions:', response.result)
           }
