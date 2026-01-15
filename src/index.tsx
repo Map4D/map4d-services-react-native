@@ -120,7 +120,7 @@ export type MFDistanceMatrixParams = {
 type MFServiceResponse<T> = {
   code: string,
   message: string,
-  result: T
+  result?: T
 }
 
 /* Place | Suggestions */
