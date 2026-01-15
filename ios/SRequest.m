@@ -83,7 +83,7 @@
   MFLocationComponent *origin = [SParamConvert MFLocationComponent:data[@"origin"]];
   MFLocationComponent *destination = [SParamConvert MFLocationComponent:data[@"destination"]];
   MFDirectionsParams *params = [[MFDirectionsParams alloc] initWithOrigin:origin destination:destination];
-  params.waypoints = [SParamConvert MFLocationComponentArray:data[@"points"]];
+  params.waypoints = [SParamConvert MFLocationComponentArray:data[@"waypoints"]];
   params.mode = [SParamConvert MFTravelMode:data[@"mode"] fallback:params.mode];
   params.language = [SParamConvert MFLanguageResult:data[@"language"] fallback:params.language];
   params.weighting = [SParamConvert MFRouteWeighting:data[@"weighting"] fallback:params.weighting];
