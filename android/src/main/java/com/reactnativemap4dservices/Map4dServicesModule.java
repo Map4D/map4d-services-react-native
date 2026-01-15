@@ -70,22 +70,9 @@ public class Map4dServicesModule extends ReactContextBaseJavaModule {
     SClient.fireRequest(servicesOptions, SRequest.buildDirectionsRequestWithData(params), promise);
   }
 
-  /* Route | ETA */
-  @ReactMethod
-  public void fetchRouteETA(ReadableMap params, @NonNull Promise promise) {
-    SClient.fireRequest(servicesOptions, SRequest.buildRouteETARequestWithData(params), promise);
-  }
-
   /* Route | Distance matrix */
   @ReactMethod
   public void fetchDistanceMatrix(ReadableMap params, @NonNull Promise promise) {
     SClient.fireRequest(servicesOptions, SRequest.buildDistanceMatrixRequestWithData(params), promise);
   }
-
-  /* Route | Graph route */
-  @ReactMethod
-  public void fetchGraphRoute(ReadableMap params, @NonNull Promise promise) {
-    SClient.fireRequest(servicesOptions, SRequest.buildGraphRouteRequestWithData(params), promise);
-  }
-
 }

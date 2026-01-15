@@ -229,58 +229,6 @@ public class SRequest {
     return serviceOptionsBuilder.build();
   }
 
-  static MFServiceOptions buildRouteETARequestWithData(@NonNull ReadableMap params) {
-    MFServiceOptions.Builder serviceOptionsBuilder = new MFServiceOptions.Builder();
-    serviceOptionsBuilder.url("/sdk/route/eta");
-    serviceOptionsBuilder.method(MFMethod.POST);
-
-    JSONObject jsonObject = new JSONObject();
-    try {
-      if (params.hasKey("origins") && !params.isNull("origins")) {
-        JSONArray origins = SConverter.toOriginJsonArray(params.getArray("origins"));
-        jsonObject.put("origins", origins);
-      }
-
-      if (params.hasKey("destination") && !params.isNull("destination")) {
-        String destination = SConverter.toLocation(params.getMap("destination"));
-        jsonObject.put("destination", destination);
-      }
-
-      if (params.hasKey("mode") && !params.isNull("mode")) {
-        String mode = params.getString("mode");
-        jsonObject.put("mode", mode);
-      }
-
-      if (params.hasKey("weighting") && !params.isNull("weighting")) {
-        int weighting = SConverter.toWeighting(params.getString("weighting"));
-        jsonObject.put("weighting", String.valueOf(weighting));
-      }
-
-      if (params.hasKey("language") && !params.isNull("language")) {
-        String language = params.getString("language");
-        jsonObject.put("language", language);
-      }
-
-      if (params.hasKey("restriction") && !params.isNull("restriction")) {
-        ReadableMap restrictionMap = params.getMap("restriction");
-        String avoid = SConverter.toAvoid(restrictionMap);
-        if (avoid != null && !avoid.isEmpty()) {
-          jsonObject.put("avoid", avoid);
-        }
-
-        String avoidRoads = SConverter.toAvoidRoads(restrictionMap);
-        if (avoidRoads != null) {
-          jsonObject.put("avoidRoads", avoidRoads);
-        }
-      }
-    } catch (JSONException e) {
-      e.printStackTrace();
-    }
-
-    serviceOptionsBuilder.json(jsonObject.toString());
-    return serviceOptionsBuilder.build();
-  }
-
   static MFServiceOptions buildDistanceMatrixRequestWithData(@NonNull ReadableMap params) {
     MFServiceOptions.Builder serviceOptionsBuilder = new MFServiceOptions.Builder();
     serviceOptionsBuilder.url("/sdk/route/matrix");
@@ -296,50 +244,6 @@ public class SRequest {
     if (params.hasKey("destinations") && !params.isNull("destinations")) {
       String destinations = SConverter.toLocationList(params.getArray("destinations"));
       requestParams.put("destinations", destinations);
-    }
-
-    if (params.hasKey("mode") && !params.isNull("mode")) {
-      String mode = params.getString("mode");
-      requestParams.put("mode", mode);
-    }
-
-    if (params.hasKey("weighting") && !params.isNull("weighting")) {
-      int weighting = SConverter.toWeighting(params.getString("weighting"));
-      requestParams.put("weighting", String.valueOf(weighting));
-    }
-
-    if (params.hasKey("language") && !params.isNull("language")) {
-      String language = params.getString("language");
-      requestParams.put("language", language);
-    }
-
-    if (params.hasKey("restriction") && !params.isNull("restriction")) {
-      ReadableMap restrictionMap = params.getMap("restriction");
-      String avoid = SConverter.toAvoid(restrictionMap);
-      if (avoid != null && !avoid.isEmpty()) {
-        requestParams.put("avoid", avoid);
-      }
-
-      String avoidRoads = SConverter.toAvoidRoads(restrictionMap);
-      if (avoidRoads != null) {
-        requestParams.put("avoidRoads", avoidRoads);
-      }
-    }
-
-    serviceOptionsBuilder.params(requestParams);
-    return serviceOptionsBuilder.build();
-  }
-
-  static MFServiceOptions buildGraphRouteRequestWithData(@NonNull ReadableMap params) {
-    MFServiceOptions.Builder serviceOptionsBuilder = new MFServiceOptions.Builder();
-    serviceOptionsBuilder.url("/sdk/route/graph");
-    serviceOptionsBuilder.method(MFMethod.GET);
-
-    MFRequestParams requestParams = new MFRequestParams();
-
-    if (params.hasKey("locations") && !params.isNull("locations")) {
-      String points = SConverter.toLocationList(params.getArray("locations"));
-      requestParams.put("points", points);
     }
 
     if (params.hasKey("mode") && !params.isNull("mode")) {
