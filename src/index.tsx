@@ -1,9 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
 import Map4dServicesReactNative from './NativeMap4dServicesReactNative';
-
-export function multiply(a: number, b: number): number {
-  return Map4dServicesReactNative.multiply(a, b);
-}
 
 export type MFLocationComponent = {
   latitude: number,
@@ -124,8 +119,9 @@ export type MFSuggestionResult = Array<{
 }>
 export type MFSuggestionResponse = MFServiceResponse<MFSuggestionResult>
 
-export function fetchSuggestion(params: MFSuggestionParams): Promise<MFSuggestionResponse> {
-  return Map4dServices.fetchSuggestion(params);
+export async function fetchSuggestion(params: MFSuggestionParams): Promise<MFSuggestionResponse> {
+  const response = await Map4dServicesReactNative.fetchSuggestion(params);
+  return response as MFSuggestionResponse;
 }
 
 /* Place | Detail */
@@ -146,8 +142,9 @@ export type MFPlaceDetailResult = {
 }
 export type MFPlaceDetailResponse = MFServiceResponse<MFPlaceDetailResult>
 
-export function fetchPlaceDetail(placeId: string): Promise<MFPlaceDetailResponse> {
-  return Map4dServices.fetchPlaceDetail(placeId);
+export async function fetchPlaceDetail(placeId: string): Promise<MFPlaceDetailResponse> {
+  const response = await Map4dServicesReactNative.fetchPlaceDetail(placeId);
+  return response as MFPlaceDetailResponse
 }
 
 /* Place | Text search */
@@ -163,8 +160,9 @@ export type MFTextSearchResult = Array<{
 }>
 export type MFTextSearchResponse = MFServiceResponse<MFTextSearchResult>
 
-export function fetchTextSearch(params: MFTextSearchParams): Promise<MFTextSearchResponse> {
-  return Map4dServices.fetchTextSearch(params);
+export async function fetchTextSearch(params: MFTextSearchParams): Promise<MFTextSearchResponse> {
+  const response = await Map4dServicesReactNative.fetchTextSearch(params);
+  return response as MFTextSearchResponse
 }
 
 /* Place | Nearby search */
@@ -180,8 +178,9 @@ export type MFNearbySearchResult = Array<{
 }>
 export type MFNearbySearchResponse = MFServiceResponse<MFNearbySearchResult>
 
-export function fetchNearbySearch(params: MFNearbySearchParams): Promise<MFNearbySearchResponse> {
-  return Map4dServices.fetchNearbySearch(params);
+export async function fetchNearbySearch(params: MFNearbySearchParams): Promise<MFNearbySearchResponse> {
+  const response = await Map4dServicesReactNative.fetchNearbySearch(params);
+  return response as MFNearbySearchResponse
 }
 
 /* Place | Viewbox search */
@@ -197,8 +196,9 @@ export type MFViewboxSearchResult = Array<{
 }>
 export type MFViewboxSearchResponse = MFServiceResponse<MFViewboxSearchResult>
 
-export function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<MFViewboxSearchResponse> {
-  return Map4dServices.fetchViewboxSearch(params);
+export async function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<MFViewboxSearchResponse> {
+  const response = await Map4dServicesReactNative.fetchViewboxSearch(params);
+  return response as MFViewboxSearchResponse
 }
 
 /* Place | Geocode */
@@ -215,8 +215,9 @@ export type MFGeocodeResult = Array<{
 }>
 export type MFGeocodeResponse = MFServiceResponse<MFGeocodeResult>
 
-export function fetchGeocode(params: MFGeocodeParams): Promise<MFGeocodeResponse> {
-  return Map4dServices.fetchGeocode(params);
+export async function fetchGeocode(params: MFGeocodeParams): Promise<MFGeocodeResponse> {
+  const response = await Map4dServicesReactNative.fetchGeocode(params);
+  return response as MFGeocodeResponse
 }
 
 /* Route | Directions */
@@ -235,8 +236,9 @@ export type MFDirectionsResult = {
 }
 export type MFDirectionsResponse = MFServiceResponse<MFDirectionsResult>
 
-export function fetchDirections(params: MFDirectionsParams): Promise<MFDirectionsResponse> {
-  return Map4dServices.fetchDirections(params);
+export async function fetchDirections(params: MFDirectionsParams): Promise<MFDirectionsResponse> {
+  const response = await Map4dServicesReactNative.fetchDirections(params);
+  return response as MFDirectionsResponse
 }
 
 /* Route | Distance matrix */
@@ -251,6 +253,7 @@ export type MFDistanceMatrixResult = {
 }
 export type MFDistanceMatrixResponse = MFServiceResponse<MFDistanceMatrixResult>
 
-export function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<MFDistanceMatrixResponse> {
-  return Map4dServices.fetchDistanceMatrix(params);
+export async function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<MFDistanceMatrixResponse> {
+  const response = await Map4dServicesReactNative.fetchDistanceMatrix(params);
+  return response as MFDistanceMatrixResponse
 }

@@ -1,26 +1,4 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-map4d-services';
-
-const result = multiply(3, 7);
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-/*
-import * as React from 'react';
+// import { Text, View, StyleSheet } from 'react-native';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import {
   fetchSuggestion,
@@ -32,181 +10,180 @@ import {
   fetchDirections,
   fetchDistanceMatrix,
   MFTravelMode,
-  MFSuggestionResponse
+  type MFSuggestionResponse
 } from 'react-native-map4d-services';
 
+const DATA = [
+  {
+    title: 'Suggestion',
+    onPress: () => {
+      fetchSuggestion({
+        text: 'abc',
+        acronym: true,
+        location: {
+          latitude: 16.036461,
+          longitude: 108.218159
+        }
+      }).then((response: MFSuggestionResponse) => {
+        if (response.code == 'ok') {
+          console.log('Suggestions:', response.result)
+        }
+        else {
+          console.log(`Error code: ${response.code}, message: ${response.message}`);
+        }
+      });
+    },
+  },
+  {
+    title: 'Place Detail',
+    onPress: () => {
+      fetchPlaceDetail('60dd389ef81cb14bc889d971').then(response => {
+        if (response.code == 'ok') {
+          console.log('Place Detail:', response.result)
+        }
+        else {
+          console.log(`Error code: ${response.code}, message: ${response.message}`);
+        }
+      });
+    },
+  },
+  {
+    title: 'Text Search',
+    onPress: () => {
+      let date = new Date();
+      fetchTextSearch({
+        text: 'abc',
+        // types: ['atm', 'hotel'],
+        location: {
+          latitude: 16.036461,
+          longitude: 108.218159
+        },
+        datetime: date.getTime()
+      }).then(response => {
+        if (response.code == 'ok') {
+          console.log('Text Search Results:', response.result)
+        }
+        else {
+          console.log(`Error code: ${response.code}, message: ${response.message}`);
+        }
+      })
+    },
+  },
+  {
+    title: 'Nearby Search',
+    onPress: () => {
+      fetchNearbySearch({
+        location: {
+          latitude: 16.036461,
+          longitude: 108.218159,
+        },
+        radius: 500,
+        text: 'abc',
+      }).then(response => {
+        if (response.code == 'ok') {
+          console.log('Nearby Search Results:', response.result)
+        }
+        else {
+          console.log(`Error code: ${response.code}, message: ${response.message}`);
+        }
+      });
+    }
+  },
+  {
+    title: 'Viewbox Search',
+    onPress: () => {
+      fetchViewboxSearch({
+        viewbox: {
+          southwest: { latitude: 16.056453967981348, longitude: 108.19387435913086 },
+          northeast: { latitude: 16.093031550262133, longitude: 108.25927734375 },
+        },
+        text: 'abc',
+      }).then(response => {
+        if (response.code == 'ok') {
+          console.log('Viewbox Search Results:', response.result)
+        }
+        else {
+          console.log(`Error code: ${response.code}, message: ${response.message}`);
+        }
+      })
+    }
+  },
+  {
+    title: 'Geocode',
+    onPress: () => {
+      fetchGeocode({
+        address: '31 Lê Văn Duyệt, Phường Nại Hiên Đông, Quận Sơn Trà, Thành Phố Đà Nẵng',
+      }).then(response => {
+        if (response.code == 'ok') {
+          console.log('Geocode Results:', response.result)
+        }
+        else {
+          console.log(`Error code: ${response.code}, message: ${response.message}`);
+        }
+      })
+    }
+  },
+  {
+    title: 'Directions',
+    onPress: () => {
+      fetchDirections({
+        origin: { latitude: 16.024634, longitude: 108.209217 },
+        destination: { latitude: 16.020179, longitude: 108.211212 },
+        mode: MFTravelMode.car,
+        weighting: 'shortest',
+        language: 'vi',
+        waypoints: [
+          { latitude: 16.024634, longitude: 108.211212 }
+        ],
+        restriction: {
+          location: { latitude: 16.024634, longitude: 108.209217 },
+          radius: 30,
+          // viewbox: {
+          //   southwest: { latitude: 16.056453967981348, longitude: 108.19387435913086 },
+          //   northeast: { latitude: 16.093031550262133, longitude: 108.25927734375 },
+          // },
+          // path: [
+          //   { latitude: 16.024634, longitude: 108.209217 },
+          //   { latitude: 16.024834, longitude: 108.209217 }
+          // ],
+          types: ['motorway']
+        }
+      }).then(response => {
+        if (response.code == 'ok') {
+          console.log('Directions Result:', response.result)
+        }
+        else {
+          console.log(`Error code: ${response.code}, message: ${response.message}`);
+        }
+      })
+    }
+  },
+  {
+    title: 'Distance Matrix',
+    onPress: () => {
+      fetchDistanceMatrix({
+        origins: [
+          { latitude: 16.024634, longitude: 108.209217 },
+          { latitude: 16.071766, longitude: 108.223615 },
+        ],
+        destinations: [
+          { latitude: 16.020179, longitude: 108.211212 },
+          { latitude: 16.061040, longitude: 108.216700 },
+          { latitude: 16.059145, longitude: 108.221297 }
+        ]
+      }).then(response => {
+        if (response.code == 'ok') {
+          console.log('Distance Matrix Result:', response.result)
+        }
+        else {
+          console.log(`Error code: ${response.code}, message: ${response.message}`);
+        }
+      })
+    }
+  },
+];
+
 export default function App() {
-
-  const DATA = [
-    {
-      title: 'Suggestion',
-      onPress: () => {
-        fetchSuggestion({
-          text: 'abc',
-          acronym: true,
-          location: {
-            latitude: 16.036461,
-            longitude: 108.218159
-          }
-        }).then((response: MFSuggestionResponse) => {
-          if (response.code == 'ok') {
-            console.log('Suggestions:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        });
-      },
-    },
-    {
-      title: 'Place Detail',
-      onPress: () => {
-        fetchPlaceDetail('60dd389ef81cb14bc889d971').then(response => {
-          if (response.code == 'ok') {
-            console.log('Place Detail:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        });
-      },
-    },
-    {
-      title: 'Text Search',
-      onPress: () => {
-        let date = new Date();
-        fetchTextSearch({
-          text: 'abc',
-          // types: ['atm', 'hotel'],
-          location: {
-            latitude: 16.036461,
-            longitude: 108.218159
-          },
-          datetime: date.getTime()
-        }).then(response => {
-          if (response.code == 'ok') {
-            console.log('Text Search Results:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        })
-      },
-    },
-    {
-      title: 'Nearby Search',
-      onPress: () => {
-        fetchNearbySearch({
-          location: {
-            latitude: 16.036461,
-            longitude: 108.218159,
-          },
-          radius: 500,
-          text: 'abc',
-        }).then(response => {
-          if (response.code == 'ok') {
-            console.log('Nearby Search Results:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        });
-      }
-    },
-    {
-      title: 'Viewbox Search',
-      onPress: () => {
-        fetchViewboxSearch({
-          viewbox: {
-            southwest: { latitude: 16.056453967981348, longitude: 108.19387435913086 },
-            northeast: { latitude: 16.093031550262133, longitude: 108.25927734375 },
-          },
-          text: 'abc',
-        }).then(response => {
-          if (response.code == 'ok') {
-            console.log('Viewbox Search Results:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        })
-      }
-    },
-    {
-      title: 'Geocode',
-      onPress: () => {
-        fetchGeocode({
-          address: '31 Lê Văn Duyệt, Phường Nại Hiên Đông, Quận Sơn Trà, Thành Phố Đà Nẵng',
-        }).then(response => {
-          if (response.code == 'ok') {
-            console.log('Geocode Results:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        })
-      }
-    },
-    {
-      title: 'Directions',
-      onPress: () => {
-        fetchDirections({
-          origin: { latitude: 16.024634, longitude: 108.209217 },
-          destination: { latitude: 16.020179, longitude: 108.211212 },
-          mode: MFTravelMode.car,
-          weighting: 'shortest',
-          language: 'vi',
-          waypoints: [
-            { latitude: 16.024634, longitude: 108.211212 }
-          ],
-          restriction: {
-            location: { latitude: 16.024634, longitude: 108.209217 },
-            radius: 30,
-            // viewbox: {
-            //   southwest: { latitude: 16.056453967981348, longitude: 108.19387435913086 },
-            //   northeast: { latitude: 16.093031550262133, longitude: 108.25927734375 },
-            // },
-            // path: [
-            //   { latitude: 16.024634, longitude: 108.209217 },
-            //   { latitude: 16.024834, longitude: 108.209217 }
-            // ],
-            types: ['motorway']
-          }
-        }).then(response => {
-          if (response.code == 'ok') {
-            console.log('Directions Result:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        })
-      }
-    },
-    {
-      title: 'Distance Matrix',
-      onPress: () => {
-        fetchDistanceMatrix({
-          origins: [
-            { latitude: 16.024634, longitude: 108.209217 },
-            { latitude: 16.071766, longitude: 108.223615 },
-          ],
-          destinations: [
-            { latitude: 16.020179, longitude: 108.211212 },
-            { latitude: 16.061040, longitude: 108.216700 },
-            { latitude: 16.059145, longitude: 108.221297 }
-          ]
-        }).then(response => {
-          if (response.code == 'ok') {
-            console.log('Distance Matrix Result:', response.result)
-          }
-          else {
-            console.log(`Error code: ${response.code}, message: ${response.message}`);
-          }
-        })
-      }
-    },
-  ];
-
   return (
     <View style={styles.container}>
       <View style={{height: 100}}>
@@ -220,6 +197,14 @@ export default function App() {
     </View>
   );
 }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
 
 const styles = StyleSheet.create({
   container: {
@@ -238,4 +223,3 @@ const styles = StyleSheet.create({
     height: 60,
   },
 });
-*/
