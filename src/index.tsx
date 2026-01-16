@@ -119,13 +119,21 @@ export type MFDistanceMatrixParams = {
 
 type MFServiceResponse<T> = {
   code: string,
-  message: string,
+  message?: string,
   result?: T
 }
 
 /* Place | Suggestions */
 
-export type MFSuggestionResult = any
+export type MFSuggestionResult = Array<{
+  id?: string
+  name?: string
+  address?: string
+  distance?: number
+  location?: { lat: number, lng: number }
+  types?: string[]
+  [_: string]: unknown
+}>
 export type MFSuggestionResponse = MFServiceResponse<MFSuggestionResult>
 
 export function fetchSuggestion(params: MFSuggestionParams): Promise<MFSuggestionResponse> {
@@ -134,7 +142,20 @@ export function fetchSuggestion(params: MFSuggestionParams): Promise<MFSuggestio
 
 /* Place | Detail */
 
-export type MFPlaceDetailResult = any
+export type MFPlaceDetailResult = {
+  id?: string
+  name?: string
+  description?: string
+  address?: string
+  addressComponents?: Array<any>
+  distance?: number
+  location?: { lat: number, lng: number }
+  types?: string[]
+  tags?: string[]
+  photos?: Array<any>
+  metadata?: Array<any>
+  [_: string]: unknown
+}
 export type MFPlaceDetailResponse = MFServiceResponse<MFPlaceDetailResult>
 
 export function fetchPlaceDetail(placeId: string): Promise<MFPlaceDetailResponse> {
@@ -143,7 +164,15 @@ export function fetchPlaceDetail(placeId: string): Promise<MFPlaceDetailResponse
 
 /* Place | Text search */
 
-export type MFTextSearchResult = any
+export type MFTextSearchResult = Array<{
+  id?: string
+  name?: string
+  address?: string
+  distance?: number
+  location?: { lat: number, lng: number }
+  types?: string[]
+  [_: string]: unknown
+}>
 export type MFTextSearchResponse = MFServiceResponse<MFTextSearchResult>
 
 export function fetchTextSearch(params: MFTextSearchParams): Promise<MFTextSearchResponse> {
@@ -152,7 +181,15 @@ export function fetchTextSearch(params: MFTextSearchParams): Promise<MFTextSearc
 
 /* Place | Nearby search */
 
-export type MFNearbySearchResult = any
+export type MFNearbySearchResult = Array<{
+  id?: string
+  name?: string
+  address?: string
+  distance?: number
+  location?: { lat: number, lng: number }
+  types?: string[]
+  [_: string]: unknown
+}>
 export type MFNearbySearchResponse = MFServiceResponse<MFNearbySearchResult>
 
 export function fetchNearbySearch(params: MFNearbySearchParams): Promise<MFNearbySearchResponse> {
@@ -161,7 +198,15 @@ export function fetchNearbySearch(params: MFNearbySearchParams): Promise<MFNearb
 
 /* Place | Viewbox search */
 
-export type MFViewboxSearchResult = any
+export type MFViewboxSearchResult = Array<{
+  id?: string
+  name?: string
+  address?: string
+  distance?: number
+  location?: { lat: number, lng: number }
+  types?: string[]
+  [_: string]: unknown
+}>
 export type MFViewboxSearchResponse = MFServiceResponse<MFViewboxSearchResult>
 
 export function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<MFViewboxSearchResponse> {
@@ -170,7 +215,16 @@ export function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<MFVie
 
 /* Place | Geocode */
 
-export type MFGeocodeResult = any
+export type MFGeocodeResult = Array<{
+  id?: string
+  name?: string
+  address?: string
+  distance?: number
+  location?: { lat: number, lng: number }
+  types?: string[]
+  addressComponents?: Array<any>
+  [_: string]: unknown
+}>
 export type MFGeocodeResponse = MFServiceResponse<MFGeocodeResult>
 
 export function fetchGeocode(params: MFGeocodeParams): Promise<MFGeocodeResponse> {
@@ -179,7 +233,18 @@ export function fetchGeocode(params: MFGeocodeParams): Promise<MFGeocodeResponse
 
 /* Route | Directions */
 
-export type MFDirectionsResult = any
+export type MFDirectionsResult = {
+  routes?: Array<{
+    summary?: string
+    overviewPolyline?: string
+    distance?: { [key: string]: any }
+    duration?: { [key: string]: any }
+    legs?: Array<{ [key: string]: any }>
+    snappedWaypoints?: Array<{ lat: number, lng: number }>
+    [_: string]: unknown
+  }>
+  [_: string]: unknown
+}
 export type MFDirectionsResponse = MFServiceResponse<MFDirectionsResult>
 
 export function fetchDirections(params: MFDirectionsParams): Promise<MFDirectionsResponse> {
@@ -188,7 +253,14 @@ export function fetchDirections(params: MFDirectionsParams): Promise<MFDirection
 
 /* Route | Distance matrix */
 
-export type MFDistanceMatrixResult = any
+export type MFDistanceMatrixResult = {
+  originAddresses?: string[],
+  destinationAddresses?: string[],
+  routeRows: Array<{
+    elements: Array<{ [key:string]: any }>
+  }>
+  [_: string]: unknown
+}
 export type MFDistanceMatrixResponse = MFServiceResponse<MFDistanceMatrixResult>
 
 export function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<MFDistanceMatrixResponse> {
