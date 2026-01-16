@@ -3,7 +3,6 @@ buildscript {
         repositories {
             google()
             mavenCentral()
-            jcenter()
         }
 
         dependencies {
@@ -19,10 +18,10 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
-    compileSdkVersion safeExtGet('Map4dServices_compileSdkVersion', 29)
+    compileSdkVersion safeExtGet('Map4dServices_compileSdkVersion', 33)
     defaultConfig {
-        minSdkVersion safeExtGet('Map4dServices_minSdkVersion', 16)
-        targetSdkVersion safeExtGet('Map4dServices_targetSdkVersion', 29)
+        minSdkVersion safeExtGet('Map4dServices_minSdkVersion', 21)
+        targetSdkVersion safeExtGet('Map4dServices_targetSdkVersion', 33)
         versionCode 1
         versionName "1.0"
 
@@ -50,11 +49,10 @@ repositories {
     }
     google()
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation 'vn.map4d:Map4dServices:2.0.0'
+    implementation 'vn.map4d:Map4dServices:2.3.+'
 }
