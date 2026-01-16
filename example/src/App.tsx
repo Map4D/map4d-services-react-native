@@ -1,3 +1,25 @@
+import { Text, View, StyleSheet } from 'react-native';
+import { multiply } from 'react-native-map4d-services';
+
+const result = multiply(3, 7);
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Result: {result}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+/*
 import * as React from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import {
@@ -216,3 +238,4 @@ const styles = StyleSheet.create({
     height: 60,
   },
 });
+*/

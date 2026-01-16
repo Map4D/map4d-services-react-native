@@ -1,3 +1,4 @@
+/*
 #import "Map4dServices.h"
 #import "SRequest.h"
 #import "SClient.h"
@@ -65,3 +66,4 @@ RCT_EXPORT_METHOD(fetchDistanceMatrix:(id)params
 }
 
 @end
+*/

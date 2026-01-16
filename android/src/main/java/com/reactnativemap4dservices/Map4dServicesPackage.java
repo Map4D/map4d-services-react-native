@@ -1,3 +1,4 @@
+/*
 package com.reactnativemap4dservices;
 
 import androidx.annotation.NonNull;
@@ -26,3 +27,4 @@ public class Map4dServicesPackage implements ReactPackage {
     return Collections.emptyList();
   }
 }
+*/

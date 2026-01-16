@@ -1,3 +1,4 @@
+/*
 package com.reactnativemap4dservices;
 
 import androidx.annotation.NonNull;
@@ -76,3 +77,4 @@ public class Map4dServicesModule extends ReactContextBaseJavaModule {
     SClient.fireRequest(servicesOptions, SRequest.buildDistanceMatrixRequestWithData(params), promise);
   }
 }
+*/
