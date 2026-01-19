@@ -12,7 +12,7 @@ npm install react-native-ipostmap-services
 
 The API key is a unique identifier that authenticates requests associated with your project for usage and billing purposes. You must have at least one API key associated with your project.
 
-Get an API key at <https://map.map4d.vn/user> > Developer > Key
+Get an API key at <https://map.ipostmap.vn/user> > Developer > Key
 
 ### Android
 
