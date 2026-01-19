@@ -136,7 +136,7 @@ export type MFSuggestionResult = Array<{
 }>
 export type MFSuggestionResponse = MFServiceResponse<MFSuggestionResult>
 
-export function fetchSuggestion(params: MFSuggestionParams): Promise<MFSuggestionResponse> {
+export async function fetchSuggestion(params: MFSuggestionParams): Promise<MFSuggestionResponse> {
   return Map4dServices.fetchSuggestion(params);
 }
 
@@ -158,7 +158,7 @@ export type MFPlaceDetailResult = {
 }
 export type MFPlaceDetailResponse = MFServiceResponse<MFPlaceDetailResult>
 
-export function fetchPlaceDetail(placeId: string): Promise<MFPlaceDetailResponse> {
+export async function fetchPlaceDetail(placeId: string): Promise<MFPlaceDetailResponse> {
   return Map4dServices.fetchPlaceDetail(placeId);
 }
 
@@ -175,7 +175,7 @@ export type MFTextSearchResult = Array<{
 }>
 export type MFTextSearchResponse = MFServiceResponse<MFTextSearchResult>
 
-export function fetchTextSearch(params: MFTextSearchParams): Promise<MFTextSearchResponse> {
+export async function fetchTextSearch(params: MFTextSearchParams): Promise<MFTextSearchResponse> {
   return Map4dServices.fetchTextSearch(params);
 }
 
@@ -192,7 +192,7 @@ export type MFNearbySearchResult = Array<{
 }>
 export type MFNearbySearchResponse = MFServiceResponse<MFNearbySearchResult>
 
-export function fetchNearbySearch(params: MFNearbySearchParams): Promise<MFNearbySearchResponse> {
+export async function fetchNearbySearch(params: MFNearbySearchParams): Promise<MFNearbySearchResponse> {
   return Map4dServices.fetchNearbySearch(params);
 }
 
@@ -209,7 +209,7 @@ export type MFViewboxSearchResult = Array<{
 }>
 export type MFViewboxSearchResponse = MFServiceResponse<MFViewboxSearchResult>
 
-export function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<MFViewboxSearchResponse> {
+export async function fetchViewboxSearch(params: MFViewboxSearchParams): Promise<MFViewboxSearchResponse> {
   return Map4dServices.fetchViewboxSearch(params);
 }
 
@@ -227,7 +227,7 @@ export type MFGeocodeResult = Array<{
 }>
 export type MFGeocodeResponse = MFServiceResponse<MFGeocodeResult>
 
-export function fetchGeocode(params: MFGeocodeParams): Promise<MFGeocodeResponse> {
+export async function fetchGeocode(params: MFGeocodeParams): Promise<MFGeocodeResponse> {
   return Map4dServices.fetchGeocode(params);
 }
 
@@ -247,7 +247,7 @@ export type MFDirectionsResult = {
 }
 export type MFDirectionsResponse = MFServiceResponse<MFDirectionsResult>
 
-export function fetchDirections(params: MFDirectionsParams): Promise<MFDirectionsResponse> {
+export async function fetchDirections(params: MFDirectionsParams): Promise<MFDirectionsResponse> {
   return Map4dServices.fetchDirections(params);
 }
 
@@ -263,6 +263,6 @@ export type MFDistanceMatrixResult = {
 }
 export type MFDistanceMatrixResponse = MFServiceResponse<MFDistanceMatrixResult>
 
-export function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<MFDistanceMatrixResponse> {
+export async function fetchDistanceMatrix(params: MFDistanceMatrixParams): Promise<MFDistanceMatrixResponse> {
   return Map4dServices.fetchDistanceMatrix(params);
 }
