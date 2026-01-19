@@ -1,7 +1,7 @@
 {
-  "name": "react-native-map4d-services",
-  "version": "1.2.0",
-  "description": "React Native Map4dServices for iOS + Android",
+  "name": "react-native-ipostmap-services",
+  "version": "1.0.0",
+  "description": "iPostMap services for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",

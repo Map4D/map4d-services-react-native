@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-map4d-services": ["./src/index"]
+      "react-native-ipostmap-services": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

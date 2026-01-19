@@ -1,6 +1,6 @@
 {
-  "name": "react-native-map4d-services-example",
-  "description": "Example app for react-native-map4d-services",
+  "name": "react-native-ipostmap-services-example",
+  "description": "Example app for react-native-ipostmap-services",
   "version": "0.0.1",
   "private": true,
   "scripts": {

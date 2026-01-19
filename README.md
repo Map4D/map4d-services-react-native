@@ -1,11 +1,11 @@
-# react-native-map4d-services
+# react-native-ipostmap-services
 
-React Native Map4dServices for iOS + Android
+iPostMap services for React Native
 
 ## Installation
 
 ```sh
-npm install react-native-map4d-services
+npm install react-native-ipostmap-services
 ```
 
 ## Setup API key
@@ -42,7 +42,7 @@ Provide access key from `ios/Runner/Info.plist`
 E.g. Auto Suggest
 
 ```js
-import { fetchSuggestion } from "react-native-map4d-services";
+import { fetchSuggestion } from "react-native-ipostmap-services";
 
 // ...
 

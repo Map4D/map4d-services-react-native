@@ -11,7 +11,7 @@ import {
   fetchDistanceMatrix,
   MFTravelMode,
   MFSuggestionResponse
-} from 'react-native-map4d-services';
+} from 'react-native-ipostmap-services';
 
 export default function App() {
 

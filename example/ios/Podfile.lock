@@ -76,8 +76,8 @@ PODS:
   - hermes-engine (0.71.15):
     - hermes-engine/Pre-built (= 0.71.15)
   - hermes-engine/Pre-built (0.71.15)
+  - iPostMapServices (1.0.0)
   - libevent (2.1.12)
-  - Map4dServices (2.5.0)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.07.22.00):
     - boost
@@ -330,8 +330,8 @@ PODS:
   - React-jsinspector (0.71.15)
   - React-logger (0.71.15):
     - glog
-  - react-native-map4d-services (1.2.0):
-    - Map4dServices (~> 2.5)
+  - react-native-ipostmap-services (1.0.0):
+    - iPostMapServices (~> 1.0)
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - React-perflogger (0.71.15)
@@ -469,7 +469,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
-  - react-native-map4d-services (from `../..`)
+  - react-native-ipostmap-services (from `../..`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -498,8 +498,8 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - fmt
+    - iPostMapServices
     - libevent
-    - Map4dServices
     - OpenSSL-Universal
     - SocketRocket
     - YogaKit
@@ -545,7 +545,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
-  react-native-map4d-services:
+  react-native-ipostmap-services:
     :path: "../.."
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
@@ -594,8 +594,8 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   hermes-engine: 04437e4291ede4af0c76c25e7efd0eacb8fd25e5
+  iPostMapServices: 7ab5b7ddf23d1cb245f31774b7bd2f70e77e029f
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  Map4dServices: 71d8442fcd3609cd96be02d7de71d14be0833f88
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: 4ce9da4fa2f8a134f62c70e4ab9d971b9d640f41
@@ -611,7 +611,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: e0cde8d57cee18097b3d2b1bf6404ad25dd8d33b
   React-jsinspector: 4ade58a6a355d97a53f847543b14f4cb5033cb70
   React-logger: 56699550750c013096a11dce3bc996e7dd583835
-  react-native-map4d-services: 53c3bf7124a69c74830a862562dfcb42b4524947
+  react-native-ipostmap-services: 901bb226719f7167ecf4df09456815224e9f27c1
   React-perflogger: 0cc42978a483a47f3696171dac2e7033936fc82d
   React-RCTActionSheet: ea922b476d24f6d40b8e02ac3228412bd3637468
   React-RCTAnimation: 7be2c148398eaa5beac950b2b5ec7102389ec3ad
@@ -629,6 +629,6 @@ SPEC CHECKSUMS:
   Yoga: 68c9c592c3e80ec37ff28db20eedb13d84aae5df
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: d1ffa94f2ca9a777169b882b880ec801692812e7
+PODFILE CHECKSUM: 2fa85bed5f036eb3df5a17a61155b8d6121316d6
 
 COCOAPODS: 1.11.2

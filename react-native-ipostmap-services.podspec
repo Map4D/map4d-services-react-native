@@ -3,7 +3,7 @@ require "json"
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
 Pod::Spec.new do |s|
-  s.name         = "react-native-map4d-services"
+  s.name         = "react-native-ipostmap-services"
   s.version      = package["version"]
   s.summary      = package["description"]
   s.homepage     = package["homepage"]
@@ -11,11 +11,11 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => "12.0" }
-  s.source       = { :git => "https://github.com/map4d/map4d-services-react-native.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/map4d/map4d-services-react-native.git", :tag => "ipostmap-#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm}"
 
-  s.dependency "Map4dServices", "~> 2.5"
+  s.dependency "iPostMapServices", "~> 1.0"
 
 # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
 # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
