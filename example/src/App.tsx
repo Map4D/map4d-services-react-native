@@ -28,6 +28,11 @@ export default function App() {
           }
         }).then((response: MFSuggestionResponse) => {
           if (response.code == 'ok') {
+            if (response.result) {
+              const first = response.result[0]
+              let x = first.location?.lat
+              let y = first.types ? first.types[0] : undefined
+            }
             console.log('Suggestions:', response.result)
           }
           else {
@@ -39,7 +44,7 @@ export default function App() {
     {
       title: 'Place Detail',
       onPress: () => {
-        fetchPlaceDetail('60dd389ef81cb14bc889d971').then(response => {
+        fetchPlaceDetail('65825e663a3b1963a64bb50c').then(response => {
           if (response.code == 'ok') {
             console.log('Place Detail:', response.result)
           }
@@ -152,6 +157,14 @@ export default function App() {
           }
         }).then(response => {
           if (response.code == 'ok') {
+            const result = response.result
+            if (result) {
+              const routes = result.routes
+              if (routes) {
+                const route = routes[0]
+                let legs = route.legs
+              }
+            }
             console.log('Directions Result:', response.result)
           }
           else {
