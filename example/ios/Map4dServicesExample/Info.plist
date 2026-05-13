@@ -25,7 +25,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>Map4dServicesAccessKey</key>
-	<string>c4fbb249a9ac57731365c7cbcc82958f</string>
+	<string>YOUR_SERVICES_ACCESS_KEY</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
