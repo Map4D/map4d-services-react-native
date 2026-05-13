@@ -1,18 +1,16 @@
-# react-native-map4d-services
+# react-native-map4d-services-dtqg
 
-React Native Map4dServices for iOS + Android
+React Native Map4dServices DTQG for iOS + Android
 
 ## Installation
 
 ```sh
-npm install react-native-map4d-services
+npm install react-native-map4d-services-dtqg
 ```
 
 ## Setup API key
 
 The API key is a unique identifier that authenticates requests associated with your project for usage and billing purposes. You must have at least one API key associated with your project.
-
-Get an API key at <https://map.map4d.vn/user> > Developer > Key
 
 ### Android
 
@@ -42,7 +40,7 @@ Provide access key from `ios/Runner/Info.plist`
 E.g. Auto Suggest
 
 ```js
-import { fetchSuggestion } from "react-native-map4d-services";
+import { fetchSuggestion } from "react-native-map4d-services-dtqg";
 
 // ...
 
